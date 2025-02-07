@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 #include "questions.h"
 
 // Initializes the array of questions for the game
@@ -254,6 +255,11 @@ void display_question(char *category, int value)
         if (strcmp(questions[i].category, category) == 0 && questions[i].value == value)
         {
             printf("Question: %s\n", questions[i].question);
+            if (strlen(questions[i].image) > 0)
+            {
+                printf("Opening image: %s\n", questions[i].image);
+                ShellExecute(NULL, "open", questions[i].image, NULL, NULL, SW_SHOWNORMAL);
+            }
             return;
         }
     }
