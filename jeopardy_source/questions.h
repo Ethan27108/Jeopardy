@@ -17,13 +17,14 @@
 #define NUM_QUESTIONS 30
 
 // List of 6 categories as array of strings
-static char categories[NUM_CATEGORIES][MAX_LEN] = {
-    "Aquatic Animal",
-    "Anime",
-    "Harry Potter"
-    "Geography"
-    "Fast Food"
-    "Video Game"};
+// static char categories[NUM_CATEGORIES][MAX_LEN] = {
+//     "Aquatic Animal",
+//     "Anime",
+//     "Harry Potter",
+//     "Geography",
+//     "Fast Food",
+//     "Video Game"
+// };
 
 // Questions struct for each question
 typedef struct
@@ -38,7 +39,8 @@ typedef struct
 
 // An array of 12 questions (4 for each category), initialized in initialize_game
 // this may need to be a pointer if you want it set dynamically
-question questions[NUM_QUESTIONS];
+extern question questions[NUM_QUESTIONS];
+
 
 // Initializes the array of questions for the game
 extern void initialize_game(void);
@@ -54,5 +56,13 @@ extern bool valid_answer(char *category, int value, char *answer);
 
 // Returns true if the question has already been answered
 extern bool already_answered(char *category, int value);
+
+// Mark question as anwsered
+extern void mark_questions_answered(char *category, int value);
+
+// Find index of question in array
+extern int find_question_index(char *category, int value);
+
+extern bool all_questions_answered();
 
 #endif /* QUESTIONS_H_ */

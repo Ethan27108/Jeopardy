@@ -3,23 +3,23 @@ CFLAGS = -Wall -Wextra -std=c99
 LFLAGS = 
 LIBS = 
 SOURCES = jeopardy.c questions.c players.c
-OBJECTS = $(subst .c,.o,$(SOURCES))
+OBJECTS = $(patsubst %.c,build/%.o,$(SOURCES))
 EXE = jeopardy.exe
 .PHONY: clean help
 
-jeopardy.exe : jeopardy.o questions.o players.o
+jeopardy.exe : build/jeopardy.o build/questions.o build/players.o
 	$(CC) $(CFLAGS) $^ $(LIBS) -o $@ 
 
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< 
+build/%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(EXE)
 
 clean:
-	rm -f $(OBJECTS) $(EXE) *~
+	rm -f build/*.o $(EXE) *~
 
 cleanup:
-	rm -f $(OBJECTS) *~
+	rm -f build/*.o *~
 
 help:
 	@echo "Valid targets:"
