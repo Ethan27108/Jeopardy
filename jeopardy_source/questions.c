@@ -29,14 +29,14 @@ void initialize_game(void)
     strcpy(questions[2].answer, "gengar");
     questions[2].value = 300;
     questions[2].answered = false;
-    strcpy(questions[2].image, "assets/gengar.png"); // Path to gengar image
+    strcpy(questions[2].image, "assets/a1.png"); // Path to gengar image
 
     strcpy(questions[3].category, "Anime");
     strcpy(questions[3].question, "What is the name of this anime character?");
     strcpy(questions[3].answer, "nobara");
     questions[3].value = 400;
     questions[3].answered = false;
-    strcpy(questions[3].image, "assets/nobara.jpg"); // Path to Nobara image
+    strcpy(questions[3].image, "assets/a2.jpg"); // Path to Nobara image
 
     strcpy(questions[4].category, "Anime");
     strcpy(questions[4].question, "What is the name of the tallest titan in attack on titan?");
@@ -51,35 +51,35 @@ void initialize_game(void)
     strcpy(questions[5].answer, "Cod bo3");
     questions[5].value = 100;
     questions[5].answered = false;
-    strcpy(questions[5].image, "assets/BO3.jpg"); // Path to Cod bo3 image
+    strcpy(questions[5].image, "assets/v1.jpg"); // Path to Cod bo3 image
 
     strcpy(questions[6].category, "Video-Game");
     strcpy(questions[6].question, "What video game is this?");
     strcpy(questions[6].answer, "Super mario oddysey");
     questions[6].value = 200;
     questions[6].answered = false;
-    strcpy(questions[6].image, "assets/Odyssey.jpg"); // Path to Super Mario Odyssey image
+    strcpy(questions[6].image, "assets/v2.jpg"); // Path to Super Mario Odyssey image
 
     strcpy(questions[7].category, "Video-Game");
     strcpy(questions[7].question, "What video game is this?");
     strcpy(questions[7].answer, "Rainbow six seige");
     questions[7].value = 300;
     questions[7].answered = false;
-    strcpy(questions[7].image, "assets/Seige.jpg"); // Path to Seige image
+    strcpy(questions[7].image, "assets/v3.jpg"); // Path to Seige image
 
     strcpy(questions[8].category, "Video-Game");
     strcpy(questions[8].question, "What video game is this?");
     strcpy(questions[8].answer, "forza5");
     questions[8].value = 400;
     questions[8].answered = false;
-    strcpy(questions[8].image, "assets/forza5.jpg"); // Path to Forza image
+    strcpy(questions[8].image, "assets/v4.jpg"); // Path to Forza image
 
     strcpy(questions[9].category, "Video-Game");
     strcpy(questions[9].question, "What video game is this?");
     strcpy(questions[9].answer, "elden ring");
     questions[9].value = 500;
     questions[9].answered = false;
-    strcpy(questions[9].image, "assets/eldenring.png"); // Path to Elder Ring image
+    strcpy(questions[9].image, "assets/v5.png"); // Path to Elder Ring image
 
     // Aquatic animal category
     strcpy(questions[10].category, "Aquatic-Animal");
@@ -227,13 +227,16 @@ void initialize_game(void)
 }
 
 // Displays each of the remaining categories and question dollar values that have not been answered
-void display_categories(void) {
+void display_categories(void)
+{
     // Print the header with category names
     printf("%-20s %-20s\n", "Category", "Value");
 
     // Iterate through the questions array and print each unanswered question
-    for (int i = 0; i < NUM_QUESTIONS; i++) {
-        if (!questions[i].answered) {
+    for (int i = 0; i < NUM_QUESTIONS; i++)
+    {
+        if (!questions[i].answered)
+        {
             printf("%-20s %-20d\n", questions[i].category, questions[i].value);
         }
     }
@@ -258,7 +261,7 @@ void display_question(char *category, int value)
             {
                 printf("Opening image: %s\n", questions[i].image);
                 char command[512];
-                snprintf(command, sizeof(command), "xdg-open %s", questions[i].image);
+                snprintf(command, sizeof(command), "eog %s", questions[i].image);
                 system(command);
             }
             return;
@@ -336,7 +339,7 @@ bool valid_answer(char *category, int value, char *answer)
 
             // Check if the given answer starts with "what is" or "who is"
             if (strncmp(given_answer, "what is ", 8) != 0 && strncmp(given_answer, "who is ", 7) != 0)
-            {   
+            {
                 return false;
             }
 
