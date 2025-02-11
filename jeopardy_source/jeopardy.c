@@ -42,6 +42,9 @@ int main()
         players[c].score = 0;
     }
 
+    // clear the input buffer
+    scanf("%*c");
+
     // variable to track current player, resets when last player is reached
     int current_player = 0;
 
@@ -66,6 +69,14 @@ int main()
         // Display chosen question
         display_question(tokens[0], value);
 
+        printf("Enter player name: ");
+        char player_name[BUFFER_LEN];
+        if (fgets(player_name, BUFFER_LEN, stdin) == NULL)
+        {
+            printf("Error reading input.\n");
+            continue;
+        }
+
         // Ask for answer
         printf("Enter your answer: ");
         char answer[BUFFER_LEN];
@@ -78,12 +89,14 @@ int main()
         // Remove new line from answer
         answer[strcspn(answer, "\n")] = '\0';
 
+        player_name[strcspn(player_name, "\n")] = '\0';
+
         // Check if answer valid
         if (valid_answer(tokens[0], value, answer))
         {
             printf("Correct answer!\n");
             // Update score while tracki8ng player
-            update_score(players, NUM_PLAYERS, players[current_player].name, value);
+            update_score(players, NUM_PLAYERS, player_name, value);
         }
         else
         {
