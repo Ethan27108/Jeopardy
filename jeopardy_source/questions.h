@@ -41,7 +41,6 @@ typedef struct
 // this may need to be a pointer if you want it set dynamically
 extern question questions[NUM_QUESTIONS];
 
-
 // Initializes the array of questions for the game
 extern void initialize_game(void);
 
