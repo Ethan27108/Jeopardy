@@ -13,7 +13,6 @@
 #include "players.h"
 #include "jeopardy.h"
 
-
 // Put macros or constants here using #define
 #define BUFFER_LEN 256
 #define NUM_PLAYERS 4
@@ -45,7 +44,7 @@ int main()
 
     // clear the input buffer
     scanf("%*c");
-
+    display_categories();
     // variable to track current player, resets when last player is reached
     int current_player = 0;
 
@@ -70,12 +69,28 @@ int main()
         // Display chosen question
         display_question(tokens[0], value);
 
-        printf("Enter player name: ");
         char player_name[BUFFER_LEN];
-        if (fgets(player_name, BUFFER_LEN, stdin) == NULL)
+        while (true)
         {
-            printf("Error reading input.\n");
-            continue;
+            printf("Enter player name: ");
+            if (fgets(player_name, BUFFER_LEN, stdin) == NULL)
+            {
+                printf("Error reading input.\n");
+                continue;
+            }
+
+            // Remove new line from player name
+            player_name[strcspn(player_name, "\n")] = '\0';
+
+            // Check if player name is valid
+            if (is_valid_player(players, NUM_PLAYERS, player_name))
+            {
+                break;
+            }
+            else
+            {
+                printf("Invalid player name. Please enter a valid player name.\n");
+            }
         }
 
         // Ask for answer

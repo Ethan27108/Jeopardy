@@ -13,7 +13,8 @@
 #define MAX_LEN 256
 
 // Player struct for each player
-typedef struct {
+typedef struct
+{
     char name[MAX_LEN];
     int score;
 } player;
@@ -21,8 +22,9 @@ typedef struct {
 // Returns true if the player name matches one of the existing players
 extern bool player_exists(player *players, int num_players, char *name);
 
-// Go through the list of players and update the score for the 
+// Go through the list of players and update the score for the
 // player given their name
 extern void update_score(player *players, int num_players, char *name, int score);
 
+bool is_valid_player(player *players, int num_players, char *player_name);
 #endif /* PLAYERS_H_ */

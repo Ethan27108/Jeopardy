@@ -36,3 +36,15 @@ void update_score(player *players, int num_players, char *name, int score)
         }
     }
 }
+
+bool is_valid_player(player *players, int num_players, char *player_name)
+{
+    for (int i = 0; i < num_players; i++)
+    {
+        if (strcmp(players[i].name, player_name) == 0)
+        {
+            return true;
+        }
+    }
+    return false;
+}
