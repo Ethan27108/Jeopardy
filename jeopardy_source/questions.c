@@ -230,15 +230,35 @@ void initialize_game(void)
 void display_categories(void)
 {
     // Print the header with category names
-    printf("%-20s %-20s\n", "Category", "Value");
+    static char categories[NUM_CATEGORIES][MAX_LEN] = {
+        "Anime",
+        "Video Game",
+        "Aquatic Animal",
+        "Fast Food",
+        "Harry Potter",
+        "Geography"};
 
-    // Iterate through the questions array and print each unanswered question
-    for (int i = 0; i < NUM_QUESTIONS; i++)
+    for (int i = 0; i < NUM_CATEGORIES; i++)
     {
-        if (!questions[i].answered)
+        printf("%-20s", categories[i]);
+    }
+
+    printf("\n");
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < NUM_CATEGORIES; j++)
         {
-            printf("%-20s %-20d\n", questions[i].category, questions[i].value);
+            if (!questions[i + 5 * j].answered)
+            {
+                printf("%-20d", questions[i + 5 * j].value);
+            }
+            else
+            {
+                printf("%-20s", "");
+            }
         }
+        printf("\n");
     }
 }
 
