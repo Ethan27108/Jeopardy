@@ -1,7 +1,13 @@
 # Tutorial 4 Jeopardy Game
 
 ## Overview
-This is a simple command-line-based Jeopardy game implemented in C for the SOFE 3950U / CSCI 3020U: Operating Systems course. The game allows multiple players to take turns selecting and answering trivia questions from different categories, earning points based on correct responses. The game keeps track of players scores and displays everyones at the end of each round
+ For this tutorial activity, we were tasked with creating the game show Jeopardy as a command line interactive game. The rules of the game and a high-level overview of the program are included below.
+ 
+As per the project requirements, the users interact with the game via the command line. The users are initialized (a total of 4 players) with their names and a starting balance of $0.  
+
+After the players have been registered, the game will begin. A number of categories will be displayed, with options under the categories ranging from low to high dollar values. The first player that wants to answer will have their name typed, after which they must answer the question. An answer MUST begin with the words “what is” or “who is”, similar to the real Jeopardy game. A correct answer will add the dollar amount associated with the question to their total balance before ending the round, while an incorrect answer will simply end the round. Regardless of answer correctness, a picked question can NOT be used again. The correct answer is displayed at the end of the round after the player’s attempt. 
+
+This game loop is repeated until the question bank is fully exhausted. The player with the highest balance at the end is the winner. 
 
 ## Features
 - Supports as many players as you want.
@@ -9,6 +15,8 @@ This is a simple command-line-based Jeopardy game implemented in C for the SOFE 
 - Score tracking for each player.
 - Image support for certain questions.
 - A scoreboard.
+- Support for multiword/space seperated questions.
+- Some questions accept multiple answers.
 
 ## How to Play
 1. Compile the program using a C compiler (e.g., GCC).
